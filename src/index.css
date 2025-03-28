@@ -1,0 +1,84 @@
+@import url("https://fonts.googleapis.com/css2?family=Titillium+Web:ital,wght@0,200;0,300;0,400;0,600;0,700;0,900;1,200;1,300;1,400;1,600;1,700&display=swap");
+@import "tailwindcss";
+
+@config "../tailwind.config.js";
+
+@theme {
+  --color-default: #1d3554;
+  --color-text: #e6d0cf;
+
+  /* Font families */
+  --font-family-sans: "Titillium Web", sans-serif;
+}
+
+*{
+  scroll-behavior: smooth !important;
+}
+@layer base {
+  body {
+    background-color: var(--color-default);
+    color: var(--color-text);
+    font-family: var(--font-family-sans);
+  }
+
+  h1,
+  h2,
+  h3,
+  h4 {
+    font-family: var(--font-family-sans);
+    font-weight: 600;
+  }
+}
+.bg-grid {
+  position: relative;
+  overflow: hidden;
+}
+.bg-grid::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  z-index: -2;
+  width: 100%;
+  height: 100%;
+  background: url(./assets/images/bg-3.jpg) center/cover no-repeat;
+  transform: scale(var(--scroll-scale, 1));
+  transition: transform 500ms ease-out;
+}
+.bg-grid::after {
+  content: "";
+  position: absolute;
+  z-index: -1;
+  background: #1d3554ee;
+  height: 100%;
+  width: 100%;
+  top: 0;
+  left: 0;
+  bottom: 0;
+}
+
+
+/* Scroll Animations */
+.animate-in {
+    animation: fadeInUp 0.6s ease-out forwards;
+}
+
+.animate-in-delay-1 {
+    animation: fadeInUp 0.6s ease-out 0.2s forwards;
+}
+
+.animate-in-delay-2 {
+    animation: fadeInUp 0.6s ease-out 0.4s forwards;
+}
+
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
