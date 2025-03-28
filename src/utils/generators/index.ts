@@ -10,7 +10,7 @@ import {
   CodeGenerationTool,
   CodeGenerationOptions,
   OutputCode,
-} from "../../components/GridLayoutCanvas/types/codeGeneration";
+} from "../../components/GridLayoutCanvas/types";
 import {
   GridConfig,
   IGridCell,

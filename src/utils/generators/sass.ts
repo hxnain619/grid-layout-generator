@@ -6,7 +6,7 @@ import {
 import {
   CodeGenerationOptions,
   OutputCode,
-} from "../../components/GridLayoutCanvas/types/codeGeneration";
+} from "../../components/GridLayoutCanvas/types";
 
 const generateGridTemplateAreas = (
   config: GridConfig,
