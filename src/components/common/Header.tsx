@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import { FaBars } from "react-icons/fa6";
 import { IoClose } from "react-icons/io5";
 import clsx from "clsx";
@@ -32,7 +32,11 @@ const Header = () => {
             className="md:hidden text-brand-contrast/70 hover:text-brand-primary transition-colors"
             onClick={() => setIsOpen(!isOpen)}
           >
-            {isOpen ? <IoClose className="w-6 h-6" /> : <FaBars className="w-6 h-6" />}
+            {isOpen ? (
+              <IoClose className="w-6 h-6" />
+            ) : (
+              <FaBars className="w-6 h-6" />
+            )}
           </button>
         </div>
 

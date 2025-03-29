@@ -3,7 +3,7 @@ import {
   IGridCell,
   LayoutItem,
 } from "../../components/GridLayoutCanvas/types";
-import { OutputCode } from "../../components/GridLayoutCanvas/types/codeGeneration";
+import { OutputCode } from "../../components/GridLayoutCanvas/types";
 
 const generateGridTemplateAreas = (
   config: GridConfig,
