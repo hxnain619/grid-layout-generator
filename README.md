@@ -2,7 +2,7 @@
 
 A modern, elegant web application for generating responsive grid layouts with multiple framework support. Built with React, TypeScript, and Tailwind CSS.
 
-![Grid Layout Generator](public/preview.png)
+![Grid Layout](public/preview.png)
 
 ## Features
 

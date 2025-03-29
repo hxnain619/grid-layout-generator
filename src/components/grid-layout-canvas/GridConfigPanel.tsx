@@ -33,7 +33,7 @@ const GridConfigPanel: React.FC<GridConfigPanelProps> = ({
             value={config.rows}
             onChange={(e) => handleChange(e, "rows")}
             variant="glass"
-            className="h-8"
+            className="h-10"
           />
         </div>
         <div className="flex-1">
@@ -48,7 +48,7 @@ const GridConfigPanel: React.FC<GridConfigPanelProps> = ({
             value={config.cols}
             onChange={(e) => handleChange(e, "cols")}
             variant="glass"
-            className="h-8"
+            className="h-10"
           />
         </div>
         <div className="flex-1">
@@ -63,7 +63,7 @@ const GridConfigPanel: React.FC<GridConfigPanelProps> = ({
             value={config.gap}
             onChange={(e) => handleChange(e, "gap")}
             variant="glass"
-            className="h-8"
+            className="h-10"
           />
         </div>
       </div>

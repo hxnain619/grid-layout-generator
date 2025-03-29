@@ -1,0 +1,14 @@
+# Allow all crawlers
+User-agent: *
+Allow: /
+
+# Sitemap location
+Sitemap: https://grid-layout-generator.vercel.app/sitemap.xml
+
+# Disallow admin or private areas if they exist
+Disallow: /admin/
+Disallow: /private/
+Disallow: /api/
+
+# Crawl-delay for all bots
+Crawl-delay: 10 

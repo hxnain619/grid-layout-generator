@@ -1,4 +1,4 @@
-import GridLayoutCanvas from "../../components/GridLayoutCanvas";
+import GridLayoutCanvas from "../../components/grid-layout-canvas";
 
 const GridGenerator = () => {
     return (

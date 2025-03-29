@@ -3,7 +3,7 @@ import {
   LayoutItem,
   OutputCode,
   GridConfig,
-} from "../components/GridLayoutCanvas/types";
+} from "../components/grid-layout-canvas/types";
 
 export const generateGridTemplateAreas = (
   config: GridConfig,

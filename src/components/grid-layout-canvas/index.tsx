@@ -99,113 +99,104 @@ const GridLayoutCanvas: React.FC = () => {
     setSelectedCells([]);
     setAreaName("");
 
-    if (!layoutItems.some((item) => item.name === areaName)) {
-      setLayoutItems([
-        ...layoutItems,
-        {
-          id: areaName,
-          name: areaName,
-          content: areaName,
-        },
-      ]);
-    }
+    setLayoutItems([...layoutItems, {
+      id: Date.now().toString(),
+      name: areaName,
+      content: areaName
+    }]);
   };
 
-  // Code generation
   const handleGenerateOutput = () => {
     setIsModalOpen(true);
   };
 
   const handleGenerateWithOptions = (options: CodeGenerationOptions) => {
     setCodeOptions(options);
-    const newOutput = generateCode(config, gridAreas, layoutItems, options);
-    setOutput(newOutput);
+    const generatedCode = generateCode(config, gridAreas, layoutItems, options);
+    setOutput(generatedCode);
   };
 
   const clearGrid = () => {
-    setGridAreas(gridAreas.map((cell) => ({ ...cell, area: "" })));
-    setSelectedCells([]);
-    setOutput({ html: "", css: "" });
+    setGridAreas(gridAreas.map(cell => ({ ...cell, area: "" })));
     setLayoutItems([]);
+    setOutput({ html: "", css: "" });
   };
 
   return (
-    <div className="max-w-7xl mx-auto px-4">
-      <h1 className="text-3xl font-bold text-brand-contrast mb-6">
-        Grid Layout Generator
-      </h1>
+    <div className="max-w-7xl mx-auto px-4 py-6">
+      <h1 className="text-2xl font-bold text-brand-contrast mb-3">Grid Layout Canvas</h1>
+      <div className="flex flex-col lg:flex-row gap-6">
+        {/* Left Column - Grid Builder */}
+        <div className="flex-1 flex flex-col gap-6">
+          {/* Top Controls */}
+          <div >
+            <GridConfigPanel config={config} onConfigChange={setConfig} />
+          </div>
 
-      <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
-        {/* Left Column - Grid Builder and Config */}
-        <div className="lg:col-span-2 space-y-4">
-
+          {/* Grid Builder */}
           <div className="bg-brand-contrast/5 backdrop-blur-sm border border-brand-contrast/20 rounded-xl p-4">
-            <div className="mb-4">
-              <label className="block text-sm font-medium text-brand-contrast/70 mb-2">
-                Area Name
-              </label>
-              <div className="flex gap-2 items-center">
-                <Input
-                  id="area-name"
-                  type="text"
-                  value={areaName}
-                  onChange={(e) => setAreaName(e.target.value)}
-                  placeholder="e.g. header sidebar main"
-                  variant="glass"
-                  className="min-w-[260px] py-2!"
-                />
-                <Button
-                  size="sm"
-                  className="mb-4 py-3"
-                  variant="primary"
-                  onClick={assignAreaName}
-                  disabled={!areaName || selectedCells.length === 0}
-                >
-                  Assign
-                </Button>
-              </div>
-              <p className="text-xs text-brand-contrast/50 mt-1">
-                Select cells by dragging, then enter an area name and click Assign
-              </p>
-            </div>
-
-            <GridBuilder
-              rows={config.rows}
-              cols={config.cols}
-              gap={config.gap}
-              gridAreas={gridAreas}
-              selectedCells={selectedCells}
-              onCellMouseDown={handleCellMouseDown}
-              onCellMouseEnter={handleCellMouseEnter}
-              onMouseUp={handleMouseUp}
-            />
-
-            <div className="flex gap-2 mt-4">
+            <div className="w-full flex flex-col items-start justify-start md:flex-row gap-3 my-3">
+              <Input
+                id="area-name"
+                type="text"
+                placeholder="Enter area name"
+                value={areaName}
+                onChange={(e) => setAreaName(e.target.value)}
+                className="w-full md:min-w-[400px]"
+                containerClass="flex-1 sm:w-full"
+              />
               <Button
-                size="sm"
+                variant="primary"
+                onClick={assignAreaName}
+                disabled={!areaName || selectedCells.length === 0}
+                className="w-full md:w-auto py-3"
+              >
+                Assign Area
+              </Button>
+            </div>
+            <div>
+              <GridBuilder
+                rows={config.rows}
+                cols={config.cols}
+                gap={config.gap}
+                gridAreas={gridAreas}
+                selectedCells={selectedCells}
+                onCellMouseDown={handleCellMouseDown}
+                onCellMouseEnter={handleCellMouseEnter}
+                onMouseUp={handleMouseUp}
+              />
+            </div>
+            {/* Bottom Controls */}
+            <div className="flex flex-col sm:flex-row gap-3 my-3">
+              <Button
                 variant="primary"
                 onClick={handleGenerateOutput}
-                disabled={gridAreas.every((cell) => !cell.area)}
+                className="flex-1"
               >
                 Generate Code
               </Button>
               <Button
-                size="sm"
                 variant="secondary"
                 onClick={clearGrid}
+                className="flex-1"
               >
                 Clear Grid
               </Button>
             </div>
           </div>
+
         </div>
 
-        {/* Right Column - Layout Items and Code Output */}
-        <div className="space-y-4">
-          <GridConfigPanel config={config} onConfigChange={setConfig} />
-          <LayoutItemsPanel items={layoutItems} onItemsChange={setLayoutItems} />
+        {/* Right Column - Layout Items */}
+        <div className="lg:w-96 flex flex-col gap-6 h-full">
+          <LayoutItemsPanel
+            items={layoutItems}
+            onItemsChange={setLayoutItems}
+          />
         </div>
-        {output.css || output.html && <CodeOutputPanel output={output} />}
+      </div>
+      <div className="mt-6">
+        {Object.values(output).some(value => value.length > 0) && <CodeOutputPanel output={output} />}
       </div>
 
       <CodeGenerationModal

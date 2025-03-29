@@ -2,8 +2,8 @@ import {
   GridConfig,
   IGridCell,
   LayoutItem,
-} from "../../components/GridLayoutCanvas/types";
-import { OutputCode } from "../../components/GridLayoutCanvas/types";
+} from "../../components/grid-layout-canvas/types";
+import { OutputCode } from "../../components/grid-layout-canvas/types";
 
 const generateGridTemplateAreas = (
   config: GridConfig,

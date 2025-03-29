@@ -10,12 +10,12 @@ import {
   CodeGenerationTool,
   CodeGenerationOptions,
   OutputCode,
-} from "../../components/GridLayoutCanvas/types";
+} from "../../components/grid-layout-canvas/types";
 import {
   GridConfig,
   IGridCell,
   LayoutItem,
-} from "../../components/GridLayoutCanvas/types";
+} from "../../components/grid-layout-canvas/types";
 
 const generators: Record<
   CodeGenerationTool,

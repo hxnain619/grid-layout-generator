@@ -1,4 +1,4 @@
-import { CodeGenerationTool } from "../components/GridLayoutCanvas/types";
+import { CodeGenerationTool } from "../components/grid-layout-canvas/types";
 
 export const tools: {
   value: CodeGenerationTool;

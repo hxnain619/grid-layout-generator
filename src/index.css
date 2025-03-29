@@ -11,7 +11,7 @@
   --font-family-sans: "Titillium Web", sans-serif;
 }
 
-*{
+* {
   scroll-behavior: smooth !important;
 }
 @layer base {
@@ -58,27 +58,26 @@
   bottom: 0;
 }
 
-
 /* Scroll Animations */
 .animate-in {
-    animation: fadeInUp 0.6s ease-out forwards;
+  animation: fadeInUp 0.6s ease-out forwards;
 }
 
 .animate-in-delay-1 {
-    animation: fadeInUp 0.6s ease-out 0.2s forwards;
+  animation: fadeInUp 0.6s ease-out 0.2s forwards;
 }
 
 .animate-in-delay-2 {
-    animation: fadeInUp 0.6s ease-out 0.4s forwards;
+  animation: fadeInUp 0.6s ease-out 0.4s forwards;
 }
 
 @keyframes fadeInUp {
-    from {
-        opacity: 0;
-        transform: translateY(20px);
-    }
-    to {
-        opacity: 1;
-        transform: translateY(0);
-    }
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }

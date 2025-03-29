@@ -1,0 +1,21 @@
+{
+  "name": "Grid Layout",
+  "short_name": "GridLayout",
+  "description": "Create beautiful CSS grid layouts with ease using our intuitive drag-and-drop interface",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#1d3554",
+  "theme_color": "#1d3554",
+  "icons": [
+    {
+      "src": "/favicon.png",
+      "sizes": "32x32",
+      "type": "image/png"
+    },
+    {
+      "src": "/apple-touch-icon.png",
+      "sizes": "180x180",
+      "type": "image/png"
+    }
+  ]
+}
