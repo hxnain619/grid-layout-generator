@@ -1,8 +1,10 @@
-import React from "react";
-import Header from "../components/common/Header";
-import Footer from "../components/common/Footer";
-import StructuredData from "../components/common/StructuredData";
+import React, { Suspense, lazy } from "react";
 import { Outlet } from "react-router-dom";
+import StructuredData from "../components/common/StructuredData";
+
+// Lazy load components
+const Header = lazy(() => import("../components/common/Header"));
+const Footer = lazy(() => import("../components/common/Footer"));
 
 const Layout: React.FC = () => {
   const webAppData = {
@@ -40,13 +42,17 @@ const Layout: React.FC = () => {
   return (
     <>
       <div className="min-h-screen flex flex-col">
-        <Header />
+        <Suspense fallback={<div>Loading header...</div>}>
+          <Header />
+        </Suspense>
         <main className="flex-grow" role="main">
           <article>
             <Outlet />
           </article>
         </main>
-        <Footer />
+        <Suspense fallback={<div>Loading footer...</div>}>
+          <Footer />
+        </Suspense>
       </div>
       <StructuredData data={webAppData} />
     </>
